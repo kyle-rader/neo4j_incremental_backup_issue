@@ -44,7 +44,7 @@ the `docker-compose.yml` environment configuration to `1G` and `2G` respectively
 
     Every `5000` transactions this will use `docker-compose` to take an incremental backup and `500` transactions later print the current transaction logs in the live database data directory and then in the backup directory.
 
-* After you reach `i: 20000` (or sooner) you should start seeing that in the database folder the tx logs are getting rotated and pruned as we expect. But the just hang around in the backup folder.
+* After you reach `i: 20000` (or sooner) you should start seeing that in the database folder the tx logs are getting rotated and pruned as we expect. But they are hanging around in the backup folder for good.
 
     ![log build up](./log_build_up.png)
 
