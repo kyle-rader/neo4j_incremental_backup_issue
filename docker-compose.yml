@@ -1,0 +1,18 @@
+version: '3'
+services:
+  neo4j:
+    image: neo4j:3.3.1-enterprise
+    # volumes:
+    #   - ./data:/data
+    #   - ./backup:/backup
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    environment:
+      NEO4J_ACCEPT_LICENSE_AGREEMENT: "yes"
+      NEO4J_AUTH: "none"
+      NEO4J_dbms_memory_pagecache_size: "2G"
+      NEO4J_dbms_memory_heap_maxSize: "4G"
+      NEO4J_dbms_tx__log_rotation_retention__policy: "10k txs"
+      NEO4J_dbms_checkpoint_interval_tx: "5000"
+      NEO4J_dbms_tx__log_rotation_size: "1 M"
