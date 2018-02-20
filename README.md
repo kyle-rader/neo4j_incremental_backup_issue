@@ -18,7 +18,7 @@ The size of our backups more than doubled in the span of 5 days (these are sent 
 
 We can demonstrate the log buildup issue using this project. (Est time ~ 10-15 minutes).
 
-* This projects require you have `docker` and `docker-compose` installed for your platform and expects you can run a `bash` terminal in the repo's root directory.
+* This project requires `docker` and `docker-compose` and that you can run a `bash`-esc terminal in the repo's root directory.
 
 * If you do not have `6 GB` of RAM to give to Neo4j I recommend reducing the page cache and heap size in
 the `docker-compose.yml` environment configuration to `1G` and `2G` respectively.
@@ -47,6 +47,11 @@ the `docker-compose.yml` environment configuration to `1G` and `2G` respectively
 * After you reach `i: 20000` (or sooner) you should start seeing that in the database folder the tx logs are getting rotated and pruned as we expect. But the just hang around in the backup folder.
 
     ![log build up](./log_build_up.png)
+
+* To clean up:
+  * `ctrl-c` out of the ruby script.
+  * `ctrl-c` to stop the docker container.
+  * `docker-compose down` to cleanup the stopped neo4j container.
 
 ### Expected behavior
 The size of the backup directory should be consistent with the database data directory. Old tx logs should be removed.
